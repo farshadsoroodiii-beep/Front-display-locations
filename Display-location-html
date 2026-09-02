@@ -1,0 +1,678 @@
+admin-panel\pages\cars\components\display-locations.html
+<!-- ==========================================
+     CARS DISPLAY LOCATIONS COMPONENT
+
+     Responsibility:
+     - Display Location UI structure
+     - Location selection
+     - Placement controls
+
+     No:
+     - API Logic
+     - State Management
+     - Save Logic
+     - Dirty Detection
+     - Backend Persistence
+     - Dynamic Data Loading
+
+     State Mapping:
+
+         location
+             ↓
+         DisplayLocationsState
+
+         Placement
+             ↓
+         sortOrder
+
+     Tab 4:
+
+         Page + Card
+             ↓
+         Presentation Layer
+
+         Card
+             ↓
+         sortOrder
+
+=========================================== -->
+
+<section
+    class="cars-component cars-display-locations-info"
+    data-display-locations-component
+>
+
+    <!-- ==========================================
+         COMPONENT HEADER
+    =========================================== -->
+
+    <header class="cars-component-header">
+
+        <div class="component-title">
+
+            <h2>
+                محل‌های نمایش خودرو
+            </h2>
+
+            <p>
+                مشخص کنید این خودرو در کدام بخش‌های سایت
+                نمایش داده شود و جایگاه آن را تعیین کنید.
+            </p>
+
+        </div>
+
+    </header>
+
+    <!-- ==========================================
+         COMPONENT BODY
+    =========================================== -->
+
+    <div class="cars-component-body">
+
+        <!-- ==========================================
+             VIP SLIDER
+        =========================================== -->
+
+        <section
+            class="display-location-group display-location-group-slider"
+            data-display-group="slider"
+        >
+
+            <div class="component-subsection-header">
+
+                <h3>
+                    VIP Slider
+                </h3>
+
+                <p>
+                    نمایش خودرو در اسلایدر ویژه سایت.
+                </p>
+
+            </div>
+
+            <div class="display-location-list">
+
+                <article
+                    class="display-location-item"
+                    data-location="slider-vip"
+                    data-placement-type="position"
+                >
+
+                    <label class="display-location-select">
+
+                        <input
+                            type="checkbox"
+                            name="display_locations"
+                            value="slider-vip"
+                        >
+
+                        <span class="display-location-item-content">
+
+                            <span class="display-location-item-title">
+                                VIP Slider
+                            </span>
+
+                            <span class="display-location-item-description">
+                                نمایش خودرو در اسلایدر ویژه سایت.
+                            </span>
+
+                        </span>
+
+                    </label>
+
+                    <!-- PLACEMENT -->
+
+                    <div
+                        class="display-location-placement"
+                        data-placement-controls
+                    >
+
+                        <label class="display-placement-field">
+
+                            <span class="display-placement-label">
+                                جایگاه کارت
+                            </span>
+
+                            <input
+                                type="number"
+                                min="1"
+                                step="1"
+                                inputmode="numeric"
+                                data-display-placement="position"
+                                aria-label="جایگاه خودرو در VIP Slider"
+                                disabled
+                            >
+
+                        </label>
+
+                        <span class="display-placement-help">
+                            شماره جایگاه خودرو در اسلایدر
+                        </span>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+        <!-- ==========================================
+             MENO TAB 2
+        =========================================== -->
+
+        <section
+            class="display-location-group display-location-group-tab2"
+            data-display-group="tab2"
+        >
+
+            <div class="component-subsection-header">
+
+                <h3>
+                    Meno Tab 2
+                </h3>
+
+                <p>
+                    نمایش خودرو در بخش خودروهای صفر کیلومتر
+                    و کارکرده.
+                </p>
+
+            </div>
+
+            <div class="display-location-list">
+
+                <!-- NEW CARS -->
+
+                <article
+                    class="display-location-item"
+                    data-location="new-cars"
+                    data-placement-type="position"
+                >
+
+                    <label class="display-location-select">
+
+                        <input
+                            type="checkbox"
+                            name="display_locations"
+                            value="new-cars"
+                        >
+
+                        <span class="display-location-item-content">
+
+                            <span class="display-location-item-title">
+                                خودروهای صفر کیلومتر
+                            </span>
+
+                            <span class="display-location-item-description">
+                                نمایش خودرو در بخش خودروهای
+                                صفر کیلومتر.
+                            </span>
+
+                        </span>
+
+                    </label>
+
+                    <div
+                        class="display-location-placement"
+                        data-placement-controls
+                    >
+
+                        <label class="display-placement-field">
+
+                            <span class="display-placement-label">
+                                جایگاه کارت
+                            </span>
+
+                            <input
+                                type="number"
+                                min="1"
+                                step="1"
+                                inputmode="numeric"
+                                data-display-placement="position"
+                                aria-label="جایگاه خودروهای صفر کیلومتر"
+                                disabled
+                            >
+
+                        </label>
+
+                        <span class="display-placement-help">
+                            شماره جایگاه خودرو در این بخش
+                        </span>
+
+                    </div>
+
+                </article>
+
+                <!-- USED CARS -->
+
+                <article
+                    class="display-location-item"
+                    data-location="used-cars"
+                    data-placement-type="position"
+                >
+
+                    <label class="display-location-select">
+
+                        <input
+                            type="checkbox"
+                            name="display_locations"
+                            value="used-cars"
+                        >
+
+                        <span class="display-location-item-content">
+
+                            <span class="display-location-item-title">
+                                خودروهای کارکرده
+                            </span>
+
+                            <span class="display-location-item-description">
+                                نمایش خودرو در بخش خودروهای
+                                کارکرده.
+                            </span>
+
+                        </span>
+
+                    </label>
+
+                    <div
+                        class="display-location-placement"
+                        data-placement-controls
+                    >
+
+                        <label class="display-placement-field">
+
+                            <span class="display-placement-label">
+                                جایگاه کارت
+                            </span>
+
+                            <input
+                                type="number"
+                                min="1"
+                                step="1"
+                                inputmode="numeric"
+                                data-display-placement="position"
+                                aria-label="جایگاه خودروهای کارکرده"
+                                disabled
+                            >
+
+                        </label>
+
+                        <span class="display-placement-help">
+                            شماره جایگاه خودرو در این بخش
+                        </span>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+        <!-- ==========================================
+             MENO TAB 4
+        =========================================== -->
+
+        <section
+            class="display-location-group display-location-group-tab4"
+            data-display-group="tab4"
+        >
+
+            <div class="component-subsection-header">
+
+                <h3>
+                    Meno Tab 4
+                </h3>
+
+                <p>
+                    نمایش خودرو بر اساس دسته‌بندی بدنه
+                    و تعیین صفحه و جایگاه کارت.
+                </p>
+
+            </div>
+
+            <div class="display-location-list">
+
+                <!-- SUV -->
+
+                <article
+                    class="display-location-item display-location-item-page-card"
+                    data-location="suv"
+                    data-placement-type="page-card"
+                >
+
+                    <label class="display-location-select">
+
+                        <input
+                            type="checkbox"
+                            name="display_locations"
+                            value="suv"
+                        >
+
+                        <span class="display-location-item-content">
+
+                            <span class="display-location-item-title">
+                                SUV
+                            </span>
+
+                            <span class="display-location-item-description">
+                                نمایش خودرو در دسته‌بندی SUV.
+                            </span>
+
+                        </span>
+
+                    </label>
+
+                    <div
+                        class="display-location-placement display-location-placement-page-card"
+                        data-placement-controls
+                    >
+
+                        <div class="display-placement-field-group">
+
+                            <label class="display-placement-field">
+
+                                <span class="display-placement-label">
+                                    صفحه
+                                </span>
+
+                                <input
+                                    type="number"
+                                    min="1"
+                                    step="1"
+                                    inputmode="numeric"
+                                    data-display-placement="page"
+                                    aria-label="صفحه نمایش SUV"
+                                    disabled
+                                >
+
+                            </label>
+
+                            <label class="display-placement-field">
+
+                                <span class="display-placement-label">
+                                    کارت
+                                </span>
+
+                                <input
+                                    type="number"
+                                    min="1"
+                                    max="4"
+                                    step="1"
+                                    inputmode="numeric"
+                                    data-display-placement="position"
+                                    aria-label="شماره کارت SUV"
+                                    disabled
+                                >
+
+                            </label>
+
+                        </div>
+
+                        <span class="display-placement-help">
+                            صفحه و شماره کارت خودرو را مشخص کنید.
+                        </span>
+
+                    </div>
+
+                </article>
+
+                <!-- SEDAN -->
+
+                <article
+                    class="display-location-item display-location-item-page-card"
+                    data-location="sedan"
+                    data-placement-type="page-card"
+                >
+
+                    <label class="display-location-select">
+
+                        <input
+                            type="checkbox"
+                            name="display_locations"
+                            value="sedan"
+                        >
+
+                        <span class="display-location-item-content">
+
+                            <span class="display-location-item-title">
+                                Sedan
+                            </span>
+
+                            <span class="display-location-item-description">
+                                نمایش خودرو در دسته‌بندی Sedan.
+                            </span>
+
+                        </span>
+
+                    </label>
+
+                    <div
+                        class="display-location-placement display-location-placement-page-card"
+                        data-placement-controls
+                    >
+
+                        <div class="display-placement-field-group">
+
+                            <label class="display-placement-field">
+
+                                <span class="display-placement-label">
+                                    صفحه
+                                </span>
+
+                                <input
+                                    type="number"
+                                    min="1"
+                                    step="1"
+                                    inputmode="numeric"
+                                    data-display-placement="page"
+                                    aria-label="صفحه نمایش Sedan"
+                                    disabled
+                                >
+
+                            </label>
+
+                            <label class="display-placement-field">
+
+                                <span class="display-placement-label">
+                                    کارت
+                                </span>
+
+                                <input
+                                    type="number"
+                                    min="1"
+                                    max="4"
+                                    step="1"
+                                    inputmode="numeric"
+                                    data-display-placement="position"
+                                    aria-label="شماره کارت Sedan"
+                                    disabled
+                                >
+
+                            </label>
+
+                        </div>
+
+                        <span class="display-placement-help">
+                            صفحه و شماره کارت خودرو را مشخص کنید.
+                        </span>
+
+                    </div>
+
+                </article>
+
+                <!-- TRUCK -->
+
+                <article
+                    class="display-location-item display-location-item-page-card"
+                    data-location="truck"
+                    data-placement-type="page-card"
+                >
+
+                    <label class="display-location-select">
+
+                        <input
+                            type="checkbox"
+                            name="display_locations"
+                            value="truck"
+                        >
+
+                        <span class="display-location-item-content">
+
+                            <span class="display-location-item-title">
+                                Truck
+                            </span>
+
+                            <span class="display-location-item-description">
+                                نمایش خودرو در دسته‌بندی Truck.
+                            </span>
+
+                        </span>
+
+                    </label>
+
+                    <div
+                        class="display-location-placement display-location-placement-page-card"
+                        data-placement-controls
+                    >
+
+                        <div class="display-placement-field-group">
+
+                            <label class="display-placement-field">
+
+                                <span class="display-placement-label">
+                                    صفحه
+                                </span>
+
+                                <input
+                                    type="number"
+                                    min="1"
+                                    step="1"
+                                    inputmode="numeric"
+                                    data-display-placement="page"
+                                    aria-label="صفحه نمایش Truck"
+                                    disabled
+                                >
+
+                            </label>
+
+                            <label class="display-placement-field">
+
+                                <span class="display-placement-label">
+                                    کارت
+                                </span>
+
+                                <input
+                                    type="number"
+                                    min="1"
+                                    max="4"
+                                    step="1"
+                                    inputmode="numeric"
+                                    data-display-placement="position"
+                                    aria-label="شماره کارت Truck"
+                                    disabled
+                                >
+
+                            </label>
+
+                        </div>
+
+                        <span class="display-placement-help">
+                            صفحه و شماره کارت خودرو را مشخص کنید.
+                        </span>
+
+                    </div>
+
+                </article>
+
+                <!-- VAN -->
+
+                <article
+                    class="display-location-item display-location-item-page-card"
+                    data-location="van"
+                    data-placement-type="page-card"
+                >
+
+                    <label class="display-location-select">
+
+                        <input
+                            type="checkbox"
+                            name="display_locations"
+                            value="van"
+                        >
+
+                        <span class="display-location-item-content">
+
+                            <span class="display-location-item-title">
+                                Van
+                            </span>
+
+                            <span class="display-location-item-description">
+                                نمایش خودرو در دسته‌بندی Van.
+                            </span>
+
+                        </span>
+
+                    </label>
+
+                    <div
+                        class="display-location-placement display-location-placement-page-card"
+                        data-placement-controls
+                    >
+
+                        <div class="display-placement-field-group">
+
+                            <label class="display-placement-field">
+
+                                <span class="display-placement-label">
+                                    صفحه
+                                </span>
+
+                                <input
+                                    type="number"
+                                    min="1"
+                                    step="1"
+                                    inputmode="numeric"
+                                    data-display-placement="page"
+                                    aria-label="صفحه نمایش Van"
+                                    disabled
+                                >
+
+                            </label>
+
+                            <label class="display-placement-field">
+
+                                <span class="display-placement-label">
+                                    کارت
+                                </span>
+
+                                <input
+                                    type="number"
+                                    min="1"
+                                    max="4"
+                                    step="1"
+                                    inputmode="numeric"
+                                    data-display-placement="position"
+                                    aria-label="شماره کارت Van"
+                                    disabled
+                                >
+
+                            </label>
+
+                        </div>
+
+                        <span class="display-placement-help">
+                            صفحه و شماره کارت خودرو را مشخص کنید.
+                        </span>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</section>

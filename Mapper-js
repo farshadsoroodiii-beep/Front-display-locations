@@ -1,0 +1,218 @@
+admin-panel\js\modules\cars\display-locations\mapper.js
+/*==================================================
+    DISPLAY LOCATIONS MAPPER
+
+    Cars Admin Module
+
+    Responsibility:
+    - Map Backend Display Location response
+      to DisplayLocationsState representation.
+
+    Backend Representation:
+
+        {
+            id,
+            car_id,
+            section_id,
+            section_name,
+            section_slug,
+            sort_order,
+            created_at,
+            updated_at
+        }
+
+    State Representation:
+
+        {
+            location,
+            sortOrder
+        }
+
+    Mapping:
+
+        section_slug
+            ↓
+        location
+
+        sort_order
+            ↓
+        sortOrder
+
+    Does NOT:
+    - API
+    - Fetch
+    - DOM
+    - State management
+    - Save
+    - Validation
+    - Dirty detection
+    - Page calculation
+    - Card calculation
+    - Business rules
+
+    Architecture:
+    IIFE Namespace
+
+==================================================*/
+
+'use strict';
+
+const DisplayLocationsMapper = (() => {
+
+    /*==================================================
+        MAP SINGLE LOCATION
+    ==================================================*/
+
+    function mapLocation(
+        location
+    ) {
+
+        if (
+            !location ||
+            typeof location !== 'object' ||
+            Array.isArray(location)
+        ) {
+
+            return null;
+
+        }
+
+        const sectionSlug =
+            normalizeString(
+                location.section_slug
+            );
+
+        if (
+            !sectionSlug
+        ) {
+
+            return null;
+
+        }
+
+        const sortOrder =
+            normalizeSortOrder(
+                location.sort_order
+            );
+
+        if (
+            sortOrder === null
+        ) {
+
+            return null;
+
+        }
+
+        return {
+
+            location:
+                sectionSlug,
+
+            sortOrder:
+                sortOrder
+
+        };
+
+    }
+
+    /*==================================================
+        MAP LOCATIONS
+    ==================================================*/
+
+    function mapLocations(
+        locations
+    ) {
+
+        if (
+            !Array.isArray(locations)
+        ) {
+
+            return [];
+
+        }
+
+        return locations
+            .map(
+                mapLocation
+            )
+            .filter(
+                Boolean
+            );
+
+    }
+
+    /*==================================================
+        NORMALIZE STRING
+    ==================================================*/
+
+    function normalizeString(
+        value
+    ) {
+
+        if (
+            typeof value !== 'string'
+        ) {
+
+            return null;
+
+        }
+
+        const normalized =
+            value.trim();
+
+        if (
+            !normalized
+        ) {
+
+            return null;
+
+        }
+
+        return normalized;
+
+    }
+
+    /*==================================================
+        NORMALIZE SORT ORDER
+    ==================================================*/
+
+    function normalizeSortOrder(
+        value
+    ) {
+
+        const number =
+            Number(value);
+
+        if (
+            !Number.isInteger(number)
+        ) {
+
+            return null;
+
+        }
+
+        if (
+            number < 1
+        ) {
+
+            return null;
+
+        }
+
+        return number;
+
+    }
+
+    /*==================================================
+        PUBLIC API
+    ==================================================*/
+
+    return {
+
+        mapLocation,
+
+        mapLocations
+
+    };
+
+})();
